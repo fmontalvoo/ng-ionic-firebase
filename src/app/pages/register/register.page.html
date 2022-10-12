@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Register</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" novalidate>
+    <ion-list>
+      <ion-item>
+        <ion-label position="stacked">Email</ion-label>
+        <ion-input type="email" formControlName="email" placeholder="Email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Password</ion-label>
+        <ion-input type="password" formControlName="password" placeholder="Password"></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-row>
+      <ion-col>
+        <ion-button routerLink="/login" routerDirection="back" expand="block" type="button">Login</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button expand="block" type="submit">Register</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>
