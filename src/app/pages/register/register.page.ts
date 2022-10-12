@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -13,7 +15,11 @@ export class RegisterPage implements OnInit {
     password: ['', Validators.required],
   });
 
-  constructor(private fb: FormBuilder) { }
+  constructor(
+    private router: Router,
+    private fb: FormBuilder,
+    private as: AuthService,
+  ) { }
 
   ngOnInit() {
   }
@@ -21,7 +27,12 @@ export class RegisterPage implements OnInit {
   onSubmit() {
     if (this.registerForm.valid) {
       const { email, password } = this.registerForm.getRawValue();
-      console.info(email, password);
+      this.as.register(email, password)
+        .then(user => {
+          console.info(user.user);
+          this.router.navigate(['/home']);
+        })
+        .catch(console.error);
     } else {
       this.registerForm.markAllAsTouched();
     }

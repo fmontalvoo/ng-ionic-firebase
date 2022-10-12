@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "test-db-12439": {
+      "hosting": {
+        "app": [
+          "test-db-12439"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "test-db-12439"
+  }
+}
